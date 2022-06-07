@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 消费者的应用名称，用于追踪依赖关系（不是匹配条件），不要和提供者一样设置 -->
+    <dubbo:application name="demo-consumer"/>
+
+    <!-- 使用zookeeper注册中心发现服务 -->
+    <dubbo:registry address="zookeeper://xxx.xxx.xxx.xxx:2181"/>
+
+    <!-- 为远程服务生成代理，然后demoService可以和本地常规接口一样使用-->
+    <dubbo:reference id="demoService" check="false" interface="com.xinqi.service.DemoService"/>
+</beans>
